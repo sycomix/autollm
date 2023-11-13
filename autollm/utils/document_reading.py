@@ -128,5 +128,4 @@ def read_web_as_documents(url: str) -> List[Document]:
         List[Document]: A list of Document objects containing content and metadata from the web pages.
     """
     reader = WebDocsReader()
-    documents = reader.load_data(url)
-    return documents
+    return reader.load_data(url)

@@ -17,7 +17,7 @@ class LangchainPDFReader(BaseReader):
     def load_data(self, file_path: str, extra_info: dict = None) -> List[Document]:
         """Load data from a PDF file using langchain's PDFMinerLoader."""
         # Convert the PosixPath object to a string before passing it to PDFMinerLoader
-        loader = PDFMinerLoader(str(file_path), extract_images=self.extract_images)
+        loader = PDFMinerLoader(file_path, extract_images=self.extract_images)
 
         logger.info(f"Parsing pages of the PDF file: {file_path}..")
         langchain_documents = loader.load()  # This returns a list of langchain Document objects
