@@ -55,8 +55,7 @@ class WebPageReader:
         soup = BeautifulSoup(response.content, "html.parser")
 
         for selector in SELECTORS:
-            element = soup.select_one(selector)
-            if element:
+            if element := soup.select_one(selector):
                 content = element.prettify()
                 break
         else:

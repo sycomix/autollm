@@ -50,8 +50,11 @@ class WebDocsReader:
     def _get_all_urls(self, url):
         self.visited_links = set()
         self._get_child_links_recursive(url)
-        urls = [link for link in self.visited_links if urlparse(link).netloc == urlparse(url).netloc]
-        return urls
+        return [
+            link
+            for link in self.visited_links
+            if urlparse(link).netloc == urlparse(url).netloc
+        ]
 
     def load_data(self, url: str) -> List[Document]:
         logger.info(f"Listing child pages of {url}..")
